@@ -1,0 +1,298 @@
+/* ============================================================
+   create.css — Add Employee page, Apple.com aesthetic
+   PC21 Advanced Web Development | Terminal Assessment 1
+   ============================================================ */
+
+/* ── Create-specific layout overrides ────────────────────── */
+.create-main {
+  gap: 16px;
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────── */
+.breadcrumb {
+  display: flex; align-items: center; gap: .45rem;
+  font-size: .78rem;
+}
+.bc-link {
+  color: var(--blue); text-decoration: none;
+  display: flex; align-items: center; gap: .3rem;
+  transition: opacity .15s;
+}
+.bc-link:hover { opacity: .7; }
+.bc-sep { color: var(--gray-200); font-size: .6rem; }
+.bc-current { color: var(--gray-500); }
+
+/* ── Two-column layout ────────────────────────────────────── */
+.create-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ══════════════════════════════════════════════════
+   FORM CARD
+   ══════════════════════════════════════════════════ */
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.04);
+  padding: 36px 40px 40px;
+}
+
+/* Card header with icon */
+.form-card-head {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.form-card-icon {
+  width: 44px; height: 44px;
+  background: var(--blue-light);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.form-card-title {
+  font-size: 1.1rem; font-weight: 600;
+  letter-spacing: -.03em; color: var(--gray-800);
+  margin-bottom: .15rem;
+}
+.form-card-sub {
+  font-size: .78rem; color: var(--gray-500);
+}
+
+.form-card-divider {
+  height: 1px; background: var(--gray-100);
+  margin-bottom: 2rem;
+}
+
+/* ── Field groups ─────────────────────────────────────────── */
+.field-group {
+  margin-bottom: 1.4rem;
+  display: flex; flex-direction: column; gap: .4rem;
+}
+
+.field-label {
+  font-size: .78rem; font-weight: 500;
+  color: var(--gray-600); letter-spacing: .01em;
+}
+.req { color: #c0392b; margin-left: 2px; }
+
+/* Input wrapper */
+.field-wrap {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute; left: .95rem; top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-300); font-size: .8rem;
+  pointer-events: none;
+  transition: color .15s var(--ease);
+  z-index: 1;
+}
+.field-wrap:focus-within .field-icon { color: var(--blue); }
+
+/* Text / number inputs */
+.field-input {
+  width: 100%;
+  padding: .72rem 1rem .72rem 2.45rem;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--r-md);
+  font-family: var(--font); font-size: .875rem;
+  color: var(--gray-800); outline: none;
+  transition: border-color .15s var(--ease), box-shadow .15s var(--ease),
+              background .15s var(--ease);
+  -webkit-appearance: none; appearance: none;
+}
+.field-input::placeholder { color: var(--gray-300); font-weight: 300; }
+.field-input:focus {
+  background: var(--white);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3.5px rgba(0,113,227,.13);
+}
+.field-input.is-invalid {
+  border-color: #c0392b;
+  background: #fdf0ef;
+  box-shadow: 0 0 0 3px rgba(192,57,43,.1);
+}
+
+/* Salary — peso prefix instead of icon */
+.field-prefix {
+  position: absolute; left: .95rem; top: 50%;
+  transform: translateY(-50%);
+  font-size: .9rem; font-weight: 500;
+  color: var(--gray-400); pointer-events: none; z-index: 1;
+  transition: color .15s;
+}
+.field-wrap:focus-within .field-prefix { color: var(--blue); }
+.field-salary { padding-left: 2rem !important; }
+
+/* Select */
+.select-wrap .field-input { padding-right: 2.4rem; cursor: pointer; }
+.select-caret {
+  position: absolute; right: .95rem; top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-300); font-size: .7rem;
+  pointer-events: none; z-index: 1;
+  transition: color .15s var(--ease);
+}
+.field-wrap:focus-within .select-caret { color: var(--blue); }
+
+/* Field-level errors */
+.field-error {
+  display: none; align-items: center; gap: .3rem;
+  font-size: .74rem; color: #c0392b;
+}
+.field-error.show { display: flex; }
+.field-error i { font-size: .68rem; flex-shrink: 0; }
+
+/* Salary live preview */
+.salary-preview {
+  display: flex; align-items: center; gap: .35rem;
+  font-size: .78rem; font-weight: 500; color: var(--blue);
+  margin-top: .1rem;
+}
+.salary-preview i { font-size: .7rem; }
+
+/* ── Form action buttons ───────────────────────────────────── */
+.form-actions {
+  display: flex; align-items: center; gap: .75rem;
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+.btn-cancel {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .65rem 1.25rem; border-radius: 980px;
+  background: var(--gray-100); color: var(--gray-700);
+  font-family: var(--font); font-size: .875rem; font-weight: 500;
+  text-decoration: none;
+  transition: background .15s var(--ease);
+}
+.btn-cancel:hover { background: var(--gray-200); }
+
+.btn-save {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .65rem 1.6rem; border-radius: 980px;
+  background: var(--blue); color: #fff;
+  font-family: var(--font); font-size: .875rem; font-weight: 500;
+  border: none; cursor: pointer;
+  transition: background .15s var(--ease), transform .12s var(--ease),
+              box-shadow .15s var(--ease);
+}
+.btn-save:hover {
+  background: var(--blue-h);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,113,227,.25);
+}
+.btn-save:active { transform: translateY(0); box-shadow: none; }
+
+/* ══════════════════════════════════════════════════
+   SIDE TIPS
+   ══════════════════════════════════════════════════ */
+.side-tips {
+  display: flex; flex-direction: column; gap: 14px;
+  position: sticky; top: calc(var(--nav-h) + 20px);
+}
+
+.tips-card {
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--r-lg);
+  padding: 22px 22px 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.tips-card-alt {
+  background: var(--gray-50);
+}
+
+.tips-title {
+  font-size: .82rem; font-weight: 600;
+  color: var(--gray-800); margin-bottom: .9rem;
+  display: flex; align-items: center; gap: .45rem;
+}
+.tips-title i { color: var(--blue); }
+
+.tips-list {
+  list-style: none; display: flex; flex-direction: column; gap: .65rem;
+}
+.tips-list li {
+  font-size: .78rem; color: var(--gray-600); line-height: 1.5;
+  padding-left: .9rem; position: relative;
+}
+.tips-list li::before {
+  content: '·'; position: absolute; left: 0;
+  color: var(--blue); font-weight: 700;
+}
+.tips-list strong { color: var(--gray-800); }
+
+.tips-body {
+  font-size: .78rem; color: var(--gray-500); line-height: 1.6;
+}
+
+/* Department preview card */
+.dept-preview-card {
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--r-lg);
+  padding: 20px 22px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  animation: fadeIn .25s var(--ease);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.dept-preview-label {
+  font-size: .68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--gray-400); margin-bottom: .45rem;
+}
+.dept-preview-name {
+  font-size: .95rem; font-weight: 600;
+  color: var(--gray-800); margin-bottom: .6rem;
+}
+.dept-preview-badge {
+  display: inline-block;
+  font-size: .7rem; font-weight: 600;
+  padding: .22rem .7rem; border-radius: 980px;
+  letter-spacing: .01em;
+}
+
+/* Flash reuse from employees.css */
+.flash {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .8rem 1.1rem; border-radius: var(--r-md);
+  font-size: .84rem; font-weight: 500;
+  margin-bottom: .5rem;
+}
+.flash-error {
+  background: #fdf0ef;
+  border: 1px solid rgba(192,57,43,.18);
+  color: #c0392b;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .create-layout {
+    grid-template-columns: 1fr;
+  }
+  .side-tips {
+    position: static;
+    flex-direction: row; flex-wrap: wrap;
+  }
+  .tips-card { flex: 1; min-width: 220px; }
+  .dept-preview-card { display: none !important; }
+}
+
+@media (max-width: 640px) {
+  .form-card { padding: 24px 20px 28px; }
+  .form-card-head { gap: .75rem; }
+  .form-card-icon { width: 38px; height: 38px; font-size: .95rem; }
+  .side-tips { flex-direction: column; }
+}
