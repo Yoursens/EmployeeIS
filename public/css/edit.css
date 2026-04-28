@@ -109,12 +109,45 @@ body {
 .e-page {
   display: flex; flex-direction: column;
   min-height: calc(100vh - var(--nav-h));
+  position: relative;
+}
+
+/* ── Fullpage background video ────────────────────────────── */
+.e-bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Light overlay so content stays readable over the video */
+.e-bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(240, 240, 245, 0.80);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Frosted glass on the form card */
+.e-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* ── Hero ─────────────────────────────────────────────────── */
 .e-hero {
   position: relative;
   background: var(--gray-800);
+  background-image: url('../images/index.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   overflow: hidden;
   padding: 48px 24px 40px;
 }

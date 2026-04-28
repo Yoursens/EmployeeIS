@@ -43,6 +43,15 @@
 <!-- ── Page shell ─────────────────────────────────────────── -->
 <div class="page-shell">
 
+  <!-- ── Fullpage background video ────────────────────────── -->
+  <video
+    class="create-bg-video"
+    src="<?= base_url('videos/hero.mp4') ?>"
+    autoplay loop muted playsinline
+    aria-hidden="true"
+  ></video>
+  <div class="create-bg-overlay" aria-hidden="true"></div>
+
   <!-- ── Hero strip ───────────────────────────────────────── -->
   <section class="hero-strip">
     <div class="hero-inner">

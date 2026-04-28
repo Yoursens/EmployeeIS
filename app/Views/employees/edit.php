@@ -44,6 +44,15 @@
 <!-- ── Page ─────────────────────────────────────────────────── -->
 <div class="e-page">
 
+  <!-- Fullpage background video — place at public/videos/hero.mp4 -->
+  <video
+    class="e-bg-video"
+    src="<?= base_url('videos/hero.mp4') ?>"
+    autoplay loop muted playsinline
+    aria-hidden="true"
+  ></video>
+  <div class="e-bg-overlay" aria-hidden="true"></div>
+
   <!-- ── Hero Banner ──────────────────────────────────────────── -->
   <section class="e-hero">
     <div class="e-hero-glow" aria-hidden="true"></div>

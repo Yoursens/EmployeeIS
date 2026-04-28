@@ -57,7 +57,7 @@
       <p class="hero-subtitle">Beautifully simple. Powerfully organized.</p>
       <div class="hero-actions">
         <a href="<?= base_url('register') ?>" class="btn-primary-apple">Get Started Free</a>
-        <a href="<?= base_url('employees') ?>" class="btn-ghost-apple">View Records</a>
+        <a href="<?= base_url('login') ?>" class="btn-ghost-apple">View Records</a>
       </div>
     </div>
 
@@ -179,7 +179,7 @@
 
 
 <!-- ═══════════════════════════════════════════════
-     FIELDS TABLE  ← UPDATED
+     FIELDS TABLE
      ═══════════════════════════════════════════════ -->
 <section class="fields-section reveal" id="fields">
   <div class="fields-inner">
@@ -193,7 +193,7 @@
 
     <!-- CTA button -->
     <div class="fields-cta">
-      <a href="<?= base_url('employees/create') ?>" class="btn-primary-apple">+ Add an Employee</a>
+      <a href="<?= base_url('login') ?>" class="btn-primary-apple">+ Add an Employee</a>
     </div>
 
     <!-- Full-width table -->
@@ -335,7 +335,7 @@
       <div class="tile-text">
         <div class="tile-title">All your people.<br><em>One place.</em></div>
         <p class="tile-desc">Search, filter, and manage every employee record instantly. Add, edit, or remove with full audit timestamps.</p>
-        <a href="<?= base_url('employees') ?>" class="tile-link">Explore Records</a>
+        <a href="<?= base_url('login') ?>" class="tile-link">Explore Records</a>
       </div>
       <div class="tile-cards">
         <div class="mini-card">
@@ -356,7 +356,7 @@
     <div class="tile-label">Instant Search</div>
     <div class="tile-title">Find anyone,<br><em>instantly.</em></div>
     <p class="tile-desc">Filter by name, position, or department in real time. No page reloads, no waiting.</p>
-    <a href="<?= base_url('employees') ?>" class="tile-link">Search Records</a>
+    <a href="<?= base_url('login') ?>" class="tile-link">Search Records</a>
   </div>
   <div class="tile tile-light">
     <div class="tile-icon">🔐</div>
@@ -370,7 +370,7 @@
     <div class="tile-label">Salary Tracking</div>
     <div class="tile-title">Compensation,<br><em>clearly.</em></div>
     <p class="tile-desc">Philippine Peso formatting, live salary preview on forms, and at-a-glance visibility across all records.</p>
-    <a href="<?= base_url('employees/create') ?>" class="tile-link">Add Employee</a>
+    <a href="<?= base_url('login') ?>" class="tile-link">Add Employee</a>
   </div>
   <div class="tile tile-dark">
     <div class="tile-icon">⚙️</div>
@@ -403,8 +403,8 @@
     <div class="footer-top">
       <div class="footer-col">
         <div class="footer-col-title">System</div>
-        <a href="<?= base_url('employees') ?>">Records</a>
-        <a href="<?= base_url('employees/create') ?>">Add Employee</a>
+        <a href="<?= base_url('login') ?>">Records</a>
+        <a href="<?= base_url('login') ?>">Add Employee</a>
         <a href="<?= base_url('login') ?>">Sign In</a>
         <a href="<?= base_url('register') ?>">Register</a>
         <a href="<?= base_url('forgot-password') ?>">Forgot Password</a>
@@ -436,7 +436,7 @@
       <div style="display:flex;gap:1.5rem;">
         <a href="<?= base_url('login') ?>">Sign In</a>
         <a href="<?= base_url('register') ?>">Register</a>
-        <a href="<?= base_url('employees') ?>">Records</a>
+        <a href="<?= base_url('login') ?>">Records</a>
       </div>
     </div>
   </div>
