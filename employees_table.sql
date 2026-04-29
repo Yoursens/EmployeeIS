@@ -1,29 +1,14 @@
--- =============================================================================
---  Employee Information System — Full Database Setup
---  PC21 Advanced Web Development | Terminal Assessment 1
---  Database : eis_db
--- =============================================================================
-
--- -----------------------------------------------------------------------------
--- 1. Create & select database
--- -----------------------------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS eis_db
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
 USE eis_db;
 
--- =============================================================================
--- 2. DROP existing tables (order matters — FK children first)
--- =============================================================================
 DROP TABLE IF EXISTS password_resets;
 DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS employees;
 
--- =============================================================================
--- 3. EMPLOYEES table
--- =============================================================================
 CREATE TABLE employees (
   id           INT UNSIGNED    NOT NULL AUTO_INCREMENT,
   name         VARCHAR(100)    NOT NULL,
@@ -37,9 +22,6 @@ CREATE TABLE employees (
   INDEX idx_name       (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================================================
--- 4. USERS table  (for login / register / auth)
--- =============================================================================
 CREATE TABLE users (
   id              INT UNSIGNED    NOT NULL AUTO_INCREMENT,
   first_name      VARCHAR(80)     NOT NULL,
@@ -58,9 +40,7 @@ CREATE TABLE users (
   INDEX idx_is_active (is_active)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================================================
--- 5. PASSWORD_RESETS table  (forgot-password tokens)
--- =============================================================================
+
 CREATE TABLE password_resets (
   id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
   email       VARCHAR(180)  NOT NULL,
@@ -73,9 +53,6 @@ CREATE TABLE password_resets (
   INDEX idx_pr_token (token)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================================================
--- 6. USER_SESSIONS table  (optional — persistent "remember me")
--- =============================================================================
 CREATE TABLE user_sessions (
   id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
   user_id     INT UNSIGNED  NOT NULL,
@@ -92,9 +69,6 @@ CREATE TABLE user_sessions (
     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================================================
--- 7. SEED — employees
--- =============================================================================
 INSERT INTO employees (name, position, department, salary, created_at, updated_at) VALUES
   ('Maria Clara Santos',   'Senior Software Engineer', 'Information Technology', 75000.00, NOW(), NOW()),
   ('Jose Rizal Reyes',     'Finance Manager',          'Finance',                68000.00, NOW(), NOW()),
@@ -105,15 +79,10 @@ INSERT INTO employees (name, position, department, salary, created_at, updated_a
   ('Rosa Lapu-Lapu Diaz',  'Sales Representative',     'Sales',                  38000.00, NOW(), NOW()),
   ('Miguel Luna Ferrer',   'Legal Counsel',            'Legal',                  90000.00, NOW(), NOW());
 
--- =============================================================================
--- 8. SEED — users
---    Passwords are bcrypt hashes of the plaintext shown in the comment.
---    Generate fresh hashes in PHP:  password_hash('secret', PASSWORD_BCRYPT)
--- =============================================================================
 INSERT INTO users
   (first_name, last_name, email, password_hash, role, is_active, created_at, updated_at)
 VALUES
-  -- password: Admin@1234
+
   ('System', 'Admin',
    'admin@eis.local',
    '$2y$12$eImiTXuWVxfM37uY4JANjQ==hashed_replace_me_admin',
@@ -125,7 +94,6 @@ VALUES
    '$2y$12$eImiTXuWVxfM37uY4JANjQ==hashed_replace_me_hr',
    'hr', 1, NOW(), NOW()),
 
-  -- password: Staff@1234
   ('Staff', 'User',
    'staff@eis.local',
    '$2y$12$eImiTXuWVxfM37uY4JANjQ==hashed_replace_me_staff',
